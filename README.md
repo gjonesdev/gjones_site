@@ -47,6 +47,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 # Site Information
 
+## THIS SITE IS A WORK IN PROGRESS. IT IS INTENDED TO REPLACE THE CURRENT GJONES SITE WITH A SITE BUILT ON A MORE INDUSTRY STANDARD TECH STACK.
+
 ## TODO:
 ### Turn work pages into modules
 ### Fix asterisk
