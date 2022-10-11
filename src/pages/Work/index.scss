@@ -1,0 +1,180 @@
+.back {
+	font-size: 1.2rem;
+	//opacity: 0;  this value was set to 0 for the page transition. It is disabled for now until they are reimplemented
+}
+
+.project-gallery {
+	display: flex;
+	justify-content: space-between;
+}
+
+.project-thumbnail {
+	display: block;
+	margin-top: 40px;
+	width: 320px;
+	height: 320px;
+}
+
+.project-thumbnail a {
+	padding: 0;
+	border-bottom: none;
+	cursor: pointer;
+}
+
+.project-gallery img {
+	width: 320px;
+	height: 320px;
+	background-color: var(--main-color);
+	object-fit: cover;
+	object-position: 0% 0%;
+}
+
+.portfolio-link {
+	font-size: 1.5rem;
+	grid-column: 2 / 6;
+	grid-row: 5 / 6;
+	align-self: center;
+}
+
+.portfolio-link a {
+	border-bottom: 2px solid var(--main-color);
+	content: "";
+	/* display: block; */
+	width: min-content;
+}
+
+/* Project Pages */
+
+.project-detail {
+	grid-column: 2 / 6;
+	grid-row: 3 / 7;
+}
+
+.project-description {
+	font-size: 1.5rem;
+	grid-column: 2 / 6;
+	grid-row: 5 / 7;
+}
+
+.project-description h2 {
+	margin: 30px 0px;
+}
+
+.project-description p {
+	margin-bottom: 40px;
+}
+
+.website-link {
+	display: block;
+	font-size: 1.2rem;
+	width: max-content;
+	margin-bottom: 30px;
+	grid-column: 3 / 5;
+	grid-row: 3 / 5;
+	align-self: end;
+	justify-self: center;
+	z-index: 10;
+//	opacity: 0; disabling til transitions are fixed
+}
+
+.website-link-mobile {
+	display: none;
+	grid-column: 2 / 6;
+	text-align: center;
+	margin-bottom: 80px;
+	line-height: 30px;
+}
+
+.other-gallery {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.other-gallery img {
+	width: 300px;
+	height: 300px;
+	background-color: var(--main-color);
+	object-fit: cover;
+	object-position: 0% 0%;
+}
+
+.gallery-item {
+	cursor: pointer;
+	margin: 1.5px;
+	width: 300px;
+	height: 300px;
+}
+
+.img-overlay {
+	display: block;
+	position: absolute;
+	height: inherit !important;
+	width: inherit !important;
+	opacity: 0;
+	background-image: linear-gradient(var(--main-color), var(--main-color));
+	background-size: 0% 100%;
+	background-repeat: no-repeat;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: all .4s ease-in-out;
+}
+
+.img-overlay:hover {
+	opacity: .96;
+	background-size: 100% 100%;
+	transition: all .4s ease-in-out;
+}
+
+.img-overlay ul {
+	margin-top: 0;
+	padding: 20px;
+}
+
+.img-overlay li {
+	margin: 0;
+	font-size: 1.3rem;
+	list-style: none;
+	overflow-wrap: normal;
+}
+
+.img-overlay li:first-of-type {
+	margin-bottom: 10px;
+	font-size: 2rem;
+	border-bottom: 3px solid white;
+	width: max-content;
+}
+
+.img-overlay li:nth-of-type(2) {
+	margin-bottom: 20px;
+	font-size: 1.5rem;
+}
+
+@media screen and (max-width: 820px) {
+	.website-link {
+		display: none;
+	}
+
+	.project-description {
+		font-size: 1.2rem;
+	}
+
+	.project-description h2 {
+		margin-top: 0px;
+		text-align: center;
+	}
+
+	.website-link-mobile {
+		display: inline-block;
+	}
+
+	.other-gallery {
+		margin-bottom: 60px;
+	}
+	
+	.back {
+		display: inline-block;
+		text-align: center;
+		width: 100%;
+		margin-bottom: 30px;
+	}
+}
