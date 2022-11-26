@@ -369,10 +369,15 @@ export default Asterisk;
 
 
 /* Changelog:
-Current Version 
+Current Version:
+ver 1.03:
+Revised to work when hosted on a React Application
+Cleaned and Trimmed Code
+
+Previous Versions:
 ver 1.02:
 Added leader board functionality
-Previous Versions:
+
 ver 1.01: 
 Performance upgrades
 Added pause and hide feature */
