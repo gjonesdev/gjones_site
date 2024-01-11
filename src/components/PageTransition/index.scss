@@ -1,0 +1,41 @@
+.load-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	z-index: 100;
+	pointer-events: none;
+}
+
+.load-container div {
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.load-container div:first-child {
+	background-color: var(--main-color);
+	/* background-color: #4bedc2; */
+}
+
+.load-container div:last-child {
+	display: flex;
+	flex-direction: column;
+	background-color: black;
+	font-size: 20vw;
+	text-align: center;
+	justify-content: center;
+}
+
+.load-container div:last-child h1 {
+	padding-bottom: 13vh;
+}
+
+@keyframes float {
+	50% {
+		transform: translate(0px, 20px);
+	}
+}

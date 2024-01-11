@@ -1,0 +1,72 @@
+.back {
+	font-size: 1.2rem;
+	//opacity: 0;  this value was set to 0 for the page transition. It is disabled for now until they are reimplemented
+}
+
+.gallery {
+	display: flex;
+}
+
+.gallery-item {
+	cursor: pointer;
+	margin: 1.5px;
+	width: 300px;
+	height: 300px;
+}
+
+.item {
+	margin-right: 5rem;
+}
+
+.thumbnail {
+	display: block;
+	margin-top: 40px;
+	width: 320px;
+	height: 320px;
+}
+
+.thumbnail a {
+	padding: 0;
+	border-bottom: none;
+	cursor: pointer;
+}
+
+.gallery img {
+	width: 320px;
+	height: 320px;
+	background-color: var(--main-color);
+	object-fit: cover;
+	object-position: 0% 0%;
+}
+
+.img-overlay {
+	display: block;
+	position: absolute;
+	height: inherit !important;
+	width: inherit !important;
+	opacity: 0;
+	background-image: linear-gradient(var(--main-color), var(--main-color));
+	background-size: 0% 100%;
+	background-repeat: no-repeat;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: all 0.4s ease-in-out;
+}
+
+.img-overlay:hover {
+	opacity: 0.96;
+	background-size: 100% 100%;
+	transition: all 0.4s ease-in-out;
+}
+
+.img-overlay ul {
+	margin-top: 0;
+	padding: 20px;
+}
+
+.img-overlay li {
+	margin: 0;
+	font-size: 1.3rem;
+	list-style: none;
+	overflow-wrap: normal;
+}

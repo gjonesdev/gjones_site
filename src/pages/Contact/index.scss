@@ -1,27 +1,27 @@
-#contact-links {
+.contact-links {
 	text-align: center;
 }
 
-#contact-links p {
+.contact-links p {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
-#github {
+.github-link {
 	display: inline-block;
 	margin-right: 10px;
 	height: max-content;
 	padding-top: 2px;
 }
 
-#linkedin {
+.linkedin-link {
 	display: inline-block;
 	margin-left: 10px;
 	height: max-content;
 	padding-top: 2px;
 }
 
-#form-container {
+.form-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -29,61 +29,59 @@
 	justify-content: center;
 }
 
-#form-container p {
+.form-container p {
 	margin-top: 0px;
 	margin-bottom: 30px;
 	text-align: center;
-
 }
 
-#form-container p:first-of-type {
+.form-container p:first-of-type {
 	margin-top: -30px;
 	margin-bottom: 10px;
 }
 
-#contact-form {
+.contact-form {
 	width: 80%;
 }
 
-#contact-form ul {
+.contact-form ul {
 	padding-left: 0px;
 	margin-top: 0px;
 }
 
-#contact-form li {
+.contact-form li {
 	list-style: none;
 	margin-bottom: 20px;
 }
 
-#name,
-#email {
+.name-input,
+.email-input {
 	width: 49%;
 }
 
-#email {
+.email-input {
 	margin-left: 1.3%;
 }
 
-#submit-button {
+.submit-button {
 	width: 20%;
 	background-image: linear-gradient(var(--main-color), var(--main-color));
 	background-size: 0% 100%;
 	background-repeat: no-repeat;
-	transition: .4s ease-out;
+	transition: 0.4s ease-out;
 	text-transform: uppercase;
 	font-weight: bold;
 }
 
-#submit-button:hover {
+.submit-button:hover {
 	background-size: 100% 100%;
 	cursor: pointer;
 	color: white;
 }
 
-#submit-button:focus {
+.submit-button:focus {
 	background-color: #363636;
 }
-
 
 input,
 textarea {
@@ -113,7 +111,7 @@ label {
 	display: none;
 }
 
-#confirmation {
+.confirmation {
 	float: right;
 	margin-top: 5px;
 	transform: translateY(30px);
@@ -123,8 +121,7 @@ label {
 }
 
 @media screen and (max-width: 820px) {
-
-	#contact-form {
+	.contact-form {
 		width: 100%;
 	}
 
@@ -134,11 +131,11 @@ label {
 		font-size: 1.2rem;
 	}
 
-	#submit-button {
+	.submit-button {
 		width: 100%;
 	}
 
-	#contact-links {
+	.contact-links {
 		margin-bottom: 60px;
 	}
 }

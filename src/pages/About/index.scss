@@ -1,0 +1,14 @@
+.the-guy {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.the-guy p {
+	margin-bottom: 20px;
+}
+
+@media screen and (max-width: 820px) {
+	.the-guy {
+		margin-bottom: 60px;
+	}
+}

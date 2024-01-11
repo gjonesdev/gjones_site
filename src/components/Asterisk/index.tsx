@@ -2,10 +2,10 @@
 // ADD DATA TO DATASTORE FOR PAUSED GAME SAVING
 // UPDATE THE WAY THE GAME HANDLES PAGE TRANSITIONS
 // CHANGE RESET INPUT TO BE TWO BUTTONS. NO RESET ON ENTER IF GAME RUNNING
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Sketch from "react-p5";
-import p5Types from "p5"
-import { BootScreen, StatScreen, PauseScreen, GameOverScreen } from "./modules"
+import p5Types from "p5";
+import { BootScreen, StatScreen, PauseScreen, GameOverScreen } from "./modules";
 
 ///////////
 //classes//
@@ -20,7 +20,14 @@ class Player {
 	x_back: number;
 	x_front: number;
 
-	constructor(speed: number, y_top: number, y_mid: number, y_bot: number, x_back: number, x_front: number) {
+	constructor(
+		speed: number,
+		y_top: number,
+		y_mid: number,
+		y_bot: number,
+		x_back: number,
+		x_front: number
+	) {
 		this.direction = "none";
 		this.speed = speed;
 		this.y_top = y_top;
@@ -31,7 +38,14 @@ class Player {
 	}
 
 	display(p5: p5Types) {
-		p5.triangle(this.x_back, this.y_top, this.x_front, this.y_mid, this.x_back, this.y_bot);
+		p5.triangle(
+			this.x_back,
+			this.y_top,
+			this.x_front,
+			this.y_mid,
+			this.x_back,
+			this.y_bot
+		);
 	}
 
 	update() {
@@ -97,13 +111,19 @@ class Obstacle {
 	}
 }
 
-let obstacles: Obstacle[] = ([]);
-let bullets: Bullet[] = ([]);
-let player = new Player(7, window.innerHeight / 2 - 20, window.innerHeight / 2, window.innerHeight / 2 + 20, 40, 80);
+let obstacles: Obstacle[] = [];
+let bullets: Bullet[] = [];
+let player = new Player(
+	7,
+	window.innerHeight / 2 - 20,
+	window.innerHeight / 2,
+	window.innerHeight / 2 + 20,
+	40,
+	80
+);
 let score = 0;
 let lives = 3;
 let game_screen = <BootScreen />;
-
 
 const Asterisk = () => {
 	/////////
@@ -114,9 +134,8 @@ const Asterisk = () => {
 	const [scoreState, setScore] = useState(score);
 
 	if (gameState === "running") {
-		game_screen = <StatScreen lives={livesState} score={scoreState} />
+		game_screen = <StatScreen lives={livesState} score={scoreState} />;
 	}
-
 
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
 		const gameCanvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
@@ -126,7 +145,7 @@ const Asterisk = () => {
 		p5.noStroke();
 		p5.textSize(24);
 		p5.rectMode(p5.CENTER);
-	}
+	};
 
 	const draw = (p5: p5Types) => {
 		if (gameState === "running") {
@@ -135,7 +154,7 @@ const Asterisk = () => {
 			renderObst(p5);
 			renderShoot(p5);
 		}
-	}
+	};
 
 	//////////////////
 	//game mechanics//
@@ -148,18 +167,24 @@ const Asterisk = () => {
 			p5.background("#222222");
 		} else if (gameState === "paused") {
 			setGameState("running");
-			game_screen = <StatScreen lives={livesState} />
+			game_screen = <StatScreen lives={livesState} />;
 			p5.background("#222222");
 		}
 	}
 
-
 	const init = (p5: p5Types) => {
-		let initObstacles: Obstacle[] = []
+		let initObstacles: Obstacle[] = [];
 		for (let i = 0; i < 15; i++) {
-			const size = (Math.random() * 80) + 40;
-			const obst_speed = (Math.random() * 7) + 3;
-			const newObstacle = new Obstacle(obst_speed, ((Math.random() * (window.innerWidth * 2)) + (window.innerWidth * 1.1)), ((Math.random() * (window.innerHeight - 80)) + (140 + 30)), size, size);
+			const size = Math.random() * 80 + 40;
+			const obst_speed = Math.random() * 7 + 3;
+			const newObstacle = new Obstacle(
+				obst_speed,
+				Math.random() * (window.innerWidth * 2) +
+					window.innerWidth * 1.1,
+				Math.random() * (window.innerHeight - 80) + (140 + 30),
+				size,
+				size
+			);
 			initObstacles.push(newObstacle);
 		}
 		obstacles = initObstacles;
@@ -171,26 +196,39 @@ const Asterisk = () => {
 		score = 0;
 		setScore(score);
 
-		player = new Player(7, window.innerHeight / 2 - 20, window.innerHeight / 2, window.innerHeight / 2 + 20, 40, 80);
+		player = new Player(
+			7,
+			window.innerHeight / 2 - 20,
+			window.innerHeight / 2,
+			window.innerHeight / 2 + 20,
+			40,
+			80
+		);
 		game_screen = <StatScreen lives={livesState} />;
 		p5.background("#222222");
 		setGameState("running");
-	}
+	};
 
 	const renderPlayer = (p5: any) => {
 		player.update();
 		player.display(p5);
-	}
+	};
 
 	const obstacleDespawn = (obstacle_index: number) => {
 		const tempArray = obstacles;
 		tempArray.splice(obstacle_index, 1);
-		const size = (Math.random() * 80) + 40;
-		const obst_speed = (Math.random() * 7) + 3;
-		const newObstacle = new Obstacle(obst_speed, ((Math.random() * (window.innerWidth * 2)) + (window.innerWidth * 1.1)), ((Math.random() * (window.innerHeight - 80)) + (140 + 30)), size, size);
+		const size = Math.random() * 80 + 40;
+		const obst_speed = Math.random() * 7 + 3;
+		const newObstacle = new Obstacle(
+			obst_speed,
+			Math.random() * (window.innerWidth * 2) + window.innerWidth * 1.1,
+			Math.random() * (window.innerHeight - 80) + (140 + 30),
+			size,
+			size
+		);
 		tempArray.push(newObstacle);
 		obstacles = tempArray;
-	}
+	};
 
 	function renderShoot(p5: p5Types) {
 		for (let i = 0; i < bullets.length; i++) {
@@ -206,8 +244,12 @@ const Asterisk = () => {
 			} else {
 				for (let j = 0; j < obstacles.length; j++) {
 					const obstacle = obstacles[j];
-					if (bullet.x - bullet.w / 2 >= obstacle.x - obstacle.w &&
-						bullet.y - bullet.h / 2 <= obstacle.y + obstacle.h / 2 && bullet.y + bullet.h / 2 >= obstacle.y - obstacle.h / 2) {
+					if (
+						bullet.x - bullet.w / 2 >= obstacle.x - obstacle.w &&
+						bullet.y - bullet.h / 2 <=
+							obstacle.y + obstacle.h / 2 &&
+						bullet.y + bullet.h / 2 >= obstacle.y - obstacle.h / 2
+					) {
 						const tempArray = bullets;
 						tempArray.splice(i, 1);
 						// setBullets(tempArray);
@@ -216,7 +258,7 @@ const Asterisk = () => {
 						// hitsound.play();
 						// setScore(score + 100);
 						score = score += 100;
-						setScore(score)
+						setScore(score);
 						break;
 					}
 				}
@@ -230,7 +272,12 @@ const Asterisk = () => {
 			obstacle.update();
 			obstacle.display(p5);
 
-			if (obstacle.x - obstacle.w / 2 <= player.x_front && obstacle.x + obstacle.w / 2 >= player.x_back && player.y_top <= obstacle.y + obstacle.h / 2 && player.y_bot >= obstacle.y - obstacle.h / 2) {
+			if (
+				obstacle.x - obstacle.w / 2 <= player.x_front &&
+				obstacle.x + obstacle.w / 2 >= player.x_back &&
+				player.y_top <= obstacle.y + obstacle.h / 2 &&
+				player.y_bot >= obstacle.y - obstacle.h / 2
+			) {
 				obstacleDespawn(i);
 				// damagesound.play();
 				lives--;
@@ -247,7 +294,7 @@ const Asterisk = () => {
 				obstacleDespawn(i);
 			}
 		}
-	}
+	};
 
 	/////////////
 	//controls//
@@ -270,7 +317,13 @@ const Asterisk = () => {
 			case 66:
 				// Shoot
 				if (gameState === "running") {
-					const bullet = new Bullet(6, player.x_front, player.y_mid, 10, 10);
+					const bullet = new Bullet(
+						6,
+						player.x_front,
+						player.y_mid,
+						10,
+						10
+					);
 					const tempArray = bullets;
 					tempArray.push(bullet);
 					bullets = tempArray;
@@ -285,7 +338,7 @@ const Asterisk = () => {
 			default:
 				break;
 		}
-	}
+	};
 
 	function keyReleased(event: any) {
 		switch (event.keyCode) {
@@ -300,11 +353,16 @@ const Asterisk = () => {
 
 	return (
 		<React.Fragment>
-			<Sketch setup={setup} draw={draw} keyPressed={keyPressed} keyReleased={keyReleased} />
+			<Sketch
+				setup={setup}
+				draw={draw}
+				keyPressed={keyPressed}
+				keyReleased={keyReleased}
+			/>
 			{game_screen}
 		</React.Fragment>
-	)
-}
+	);
+};
 
 export default Asterisk;
 
@@ -355,18 +413,17 @@ export default Asterisk;
 // }
 
 // const submitScore = () => {
-	// document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h2>Your Final Score:</h2>" +
-	// 	"<form onsubmit='leaderscreen(this.user.value, this.score.value);return false;'> <input id='score' type='text' name='score' value='" + score +
-	// 	"' readonly> <span id='user-input'><input type='text' name='user' placeholder='Your Username' maxlength='3'> <button type='submit' value='Submit'><i class='fas fa-caret-square-right fa-4x'></i></button><span> </form>";
-	// document.getElementById("bootscreen").style.display = "block";
-	// document.getElementById("bootscreen").style.gridRow = "1 / 4";
-	// document.getElementById("bootscreen").style.alignSelf = "center";
+// document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h2>Your Final Score:</h2>" +
+// 	"<form onsubmit='leaderscreen(this.user.value, this.score.value);return false;'> <input id='score' type='text' name='score' value='" + score +
+// 	"' readonly> <span id='user-input'><input type='text' name='user' placeholder='Your Username' maxlength='3'> <button type='submit' value='Submit'><i class='fas fa-caret-square-right fa-4x'></i></button><span> </form>";
+// document.getElementById("bootscreen").style.display = "block";
+// document.getElementById("bootscreen").style.gridRow = "1 / 4";
+// document.getElementById("bootscreen").style.alignSelf = "center";
 
-	// document.getElementById("lives").innerHTML = "GAMEOVER. PRESS ENTER TO PLAY AGAIN.";
-	// document.getElementById("score").innerHTML = "YOUR FINAL SCORE IS " + score + " POINTS.";
-	// leaderscreen(null, null);
+// document.getElementById("lives").innerHTML = "GAMEOVER. PRESS ENTER TO PLAY AGAIN.";
+// document.getElementById("score").innerHTML = "YOUR FINAL SCORE IS " + score + " POINTS.";
+// leaderscreen(null, null);
 // }
-
 
 /* Changelog:
 Current Version:

@@ -12,6 +12,6 @@ const SubmitContact = () => {
 	// confirmation.style.opacity = "1";
 	// confirmation.style.transform = "translateY(0px)";
 	return true;
-}
+};
 
 export default SubmitContact;
